@@ -2,14 +2,20 @@ package repository;
 
 import entity.GoodsEntity;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.ejb.Stateless;
+import javax.persistence.*;
 import java.util.List;
 
+@Stateless
 public class GoodsRepository {
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("myUnit");
-    private EntityManager em = emf.createEntityManager();
+
+//    @PersistenceUnit(unitName = "myUnit")
+//    private EntityManagerFactory emf;
+//
+//    private EntityManager em = emf.createEntityManager();
+
+    @PersistenceContext(name = "myUnit")
+    private EntityManager em;
 
     public void create(GoodsEntity goods) {
         em.getTransaction().begin();
@@ -36,7 +42,7 @@ public class GoodsRepository {
         em.getTransaction().commit();
     }
 
-    public void close() {
-        emf.close();
-    }
+//    public void close() {
+//        emf.close();
+//    }
 }
