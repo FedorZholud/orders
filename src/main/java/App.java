@@ -21,11 +21,11 @@ public class App extends HttpServlet {
         GoodsEntity goods;
 
         goods = goodsRepository.read(1);
-//        int id = goods.getId();
-//        String name = goods.getName();
-//        double price = goods.getPrice();
-//
-//        resp.getWriter().println("Hello from servlet");
-//        resp.getWriter().println("Goods: id-" + id + " name-" + name + " price-" + price);
+        int id = goods.getId();
+        String name = goods.getName();
+        double price = goods.getPrice();
+
+        resp.getWriter().println("Hello from servlet");
+        resp.getWriter().println("Goods: id-" + id + " name-" + name + " price-" + price);
     }
 }
