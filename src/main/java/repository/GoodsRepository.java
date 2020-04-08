@@ -2,30 +2,24 @@ package repository;
 
 import entity.GoodsEntity;
 
-import javax.ejb.Stateless;
-import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
-@Stateless
-public class GoodsRepository {
 
-    @PersistenceContext(name = "myUnit")
-    private EntityManager em;
+public interface GoodsRepository {
 
-    public void create(GoodsEntity goods) {
-        em.persist(goods);
-    }
+    //create
+    void create(GoodsEntity goods);
 
-    public GoodsEntity read(int id) {
-        GoodsEntity goods = em.find(GoodsEntity.class, id);
-        return goods;
-    }
+    //read
+    GoodsEntity read(int id);
 
-    public void update(GoodsEntity goods) {
-        goods = em.merge(goods);
-    }
+    //read all
+    List<GoodsEntity> findAll();
 
-    public void delete(GoodsEntity goods) {
-        em.remove(goods);
-    }
+    //update
+    void update(GoodsEntity goods);
+
+    //delete
+    void delete(GoodsEntity goods);
 }
